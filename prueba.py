@@ -1,0 +1,1 @@
+print("\032[4;35mImprimir")
