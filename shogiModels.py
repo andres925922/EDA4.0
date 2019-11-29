@@ -167,13 +167,26 @@ def moverPieza(tablero, jugador):
 				desicion = int(input('Desea ingresar una pieza o realizar un movimiento (1 o 2) \n'))
 		if(desicion == 0 or desicion == 2):
 
-			rowColumn = input("Ingrese pieza a mover fila y columna separadas por espacio \n")
-			
-			columna1 = int(rowColumn[2])
-			fila1 = int(rowColumn[0])
+			while True:
+				# No salimos del bucle hasta que elijamos una pieza correcta
+				rowColumn = input("Ingrese pieza a mover fila y columna separadas por espacio \n")
+				
+				columna1 = int(rowColumn[2])
+				fila1 = int(rowColumn[0])
 
-			# Capturamos la pieza
-			piezaSeleccionada = tablero[fila1][columna1]
+				# Capturamos la pieza
+				piezaSeleccionada = tablero[fila1][columna1]
+
+				try:
+					if(piezaSeleccionada.team == jugador.equipo):
+						break
+					else:
+						print('Debe seleccionar una pieza válida')
+						continue
+				except Exception:
+					print('Debe seleccionar una pieza válida')
+					continue									
+					
 
 			newRowColumn = input('Ingrese lugar nueva posición (fila, columna) de la pieza separadas por espacio \n')
 
